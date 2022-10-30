@@ -1,0 +1,38 @@
+﻿<Window x:Class="PictureViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:local="clr-namespace:PictureViewer"
+        mc:Ignorable="d"
+        Title="画像をドラッグアンドドロップしてください。" Height="450" Width="800" AllowDrop="True" Drop="Window_Drop" KeyDown="Window_KeyDown" SizeChanged="Window_SizeChanged">
+    <Grid x:Name="Grid1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="Image1" Grid.Row="0" />
+        <WindowsFormsHost x:Name="WindowsFormsHost1" Margin="0,0,0,0">
+            <wf:PictureBox x:Name="PictureBox1" Click="PictureBox1_Click" DoubleClick="PictureBox1_DoubleClick"/>
+        </WindowsFormsHost>
+        <Rectangle VerticalAlignment="Top" Height="100" Margin="0,0,0,0" Fill="Gray" Grid.Row="1"/>
+        <Button x:Name="leftButton" Content="⬅️" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="-220,0,0,0" Focusable="False" Click="leftButton_Click" Grid.Row="1" IsEnabled="False"/>
+        <Button x:Name="rightButton" Content="➡️" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="220,0,0,0" Focusable="False" Click="rightButton_Click" Grid.Row="1" IsEnabled="False"/>
+        <Button x:Name="counterclockwiseButton" Content="↪️" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="-110,0,0,0" Focusable="False" Click="counterclockwiseButton_Click" Grid.Row="1" IsEnabled="False"/>
+        <Button x:Name="clockwiseButton" Content="↩️" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="110,0,0,0" Focusable="False" Click="clockwiseButton_Click" Grid.Row="1" IsEnabled="False"/>
+        <Button x:Name="fullscreenButton" Content="↕️" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="0,0,0,0" Focusable="False" Click="fullscreenButton_Click" Grid.Row="1"/>
+        <Button x:Name="sortButton" Content="🔀" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="5,0,0,0" Focusable="False" Click="sortButton_Click" Grid.Row="1" IsEnabled="False">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="nameAsc" Header="名前 昇順" IsCheckable="True" IsChecked="True" Click="nameAsc_Click"/>
+                    <MenuItem x:Name="nameDesc" Header="名前 降順" IsCheckable="True" Click="nameDesc_Click"/>
+                    <MenuItem x:Name="dateAsc" Header="更新日時 昇順" IsCheckable="True" Click="dateAsc_Click"/>
+                    <MenuItem x:Name="dateDesc" Header="更新日時 降順" IsCheckable="True" Click="dateDesc_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button x:Name="backgroundcolorButton" Content="🔲" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="60,0,0,0" Focusable="False" Click="backgroundcolorButton_Click" Grid.Row="1"/>
+        <Button x:Name="saveButton" Content="💾" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Height="50" FontFamily="Segoe UI Emoji" FontSize="30" Margin="115,0,0,0" Focusable="False" Click="saveButton_Click" IsEnabled="False" Visibility="Hidden" Grid.Row="1"/>
+    </Grid>
+</Window>
